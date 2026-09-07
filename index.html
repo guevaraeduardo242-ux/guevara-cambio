@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="pt-AO">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Guevara Câmbio | Câmbio & Levantamento por Código</title>
+<style>
+:root{--b:#075cff;--d:#071b3a;--bg:#f4f7fb;--card:#fff;--line:#e2e8f0;--mut:#64748b;--ok:#07864e}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:#102033;font-family:Inter,system-ui,Arial}
+header{background:linear-gradient(135deg,#061936,#075cff);color:white;padding:18px 5%;position:sticky;top:0;z-index:5}nav{max-width:1180px;margin:auto;display:flex;justify-content:space-between;align-items:center}.logo{font-size:22px;font-weight:900}nav a{color:#fff;text-decoration:none;margin-left:20px;font-weight:700;font-size:14px}
+.hero{max-width:1180px;margin:40px auto;padding:0 22px;display:grid;grid-template-columns:1.1fr .9fr;gap:28px}.hero h1{font-size:clamp(35px,5vw,58px);line-height:1.03;margin:10px 0 16px}.hero p{font-size:18px;color:#dbe7ff}.pill{display:inline-block;background:#eaf1ff;color:#1550b7;padding:7px 11px;border-radius:99px;font-weight:900;font-size:12px}
+.container{max-width:1180px;margin:auto;padding:0 22px 60px}.card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:22px;box-shadow:0 12px 32px #10203312}.row{display:grid;grid-template-columns:1fr 1fr;gap:14px}.field{margin:12px 0}.field label{display:block;font-size:12px;color:var(--mut);font-weight:900;margin-bottom:6px}input,select,textarea{width:100%;padding:13px;border:1px solid #d5deea;border-radius:11px;font:inherit}button{border:0;border-radius:11px;padding:13px 17px;font-weight:900;cursor:pointer}.primary{background:var(--b);color:white}.secondary{background:#edf2f8;color:#102033}.full{width:100%}.result{background:#eef5ff;padding:16px;border-radius:14px;margin-top:15px}.result strong{font-size:28px;display:block}.notice{background:#fff8e8;border:1px solid #f1ddb0;border-radius:12px;padding:13px;font-size:12px;color:#7b5200;margin-top:14px}
+section{padding-top:40px}h2{font-size:29px;margin-bottom:7px}.sub{color:var(--mut)}.features{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}.feature{background:#fff;border:1px solid var(--line);border-radius:17px;padding:19px}.icon{font-size:28px}.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.step{background:#fff;border:1px solid var(--line);padding:17px;border-radius:15px}.num{width:32px;height:32px;border-radius:50%;background:#eaf1ff;color:var(--b);display:grid;place-items:center;font-weight:900}
+.code{font-family:ui-monospace,monospace;letter-spacing:2px;font-size:27px;font-weight:900}.status{display:inline-block;background:#e7f8ef;color:var(--ok);padding:6px 10px;border-radius:99px;font-weight:900;font-size:12px}
+#admin{display:none}.table{width:100%;border-collapse:collapse;font-size:13px}.table th,.table td{padding:10px;border-bottom:1px solid var(--line);text-align:left}
+footer{background:var(--d);color:#cbd7e8;padding:35px 5%;font-size:13px}@media(max-width:850px){.hero{grid-template-columns:1fr}.features,.steps{grid-template-columns:1fr 1fr}nav a{display:none}}@media(max-width:520px){.row,.features,.steps{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header><nav><div class="logo">Guevara Câmbio</div><div><a href="#converter">Converter</a><a href="#pedido">Pedido</a><a href="#levantamento">Levantamento</a><a href="#acompanhar">Acompanhar</a></div></nav></header>
+
+<div class="hero">
+<div><span class="pill">CÂMBIO • PEDIDOS • LEVANTAMENTO POR CÓDIGO</span><h1>O teu câmbio, simples e organizado.</h1><p>Converte moedas, faz o pedido e, quando aplicável, recebe uma referência/código para levantamento sem cartão.</p><a href="#pedido"><button class="primary">Começar pedido</button></a></div>
+<div class="card" id="converter"><h2 style="font-size:24px">Conversor de moedas</h2><p class="sub">Estimativa. Configure as cotações reais no sistema de produção.</p>
+<div class="row"><div class="field"><label>DE</label><select id="from"><option>USD</option><option>EUR</option><option>ZAR</option><option>GBP</option><option>AOA</option></select></div><div class="field"><label>PARA</label><select id="to"><option>AOA</option><option>USD</option><option>EUR</option><option>ZAR</option><option>GBP</option></select></div></div>
+<div class="field"><label>VALOR</label><input id="amount" type="number" min="0" value="100" oninput="convert()"></div><div class="result"><span>Estimativa</span><strong id="out">91 800 Kz</strong><small id="rt">1 USD = 918 AOA</small></div></div>
+</div>
+
+<div class="container">
+<section><h2>Serviços</h2><p class="sub">Pensado para nacionais e estrangeiros, sujeito às regras de identificação e operação aplicáveis.</p>
+<div class="features"><div class="feature"><div class="icon">💱</div><h3>Câmbio</h3><p>Solicite a compra ou venda de moeda.</p></div><div class="feature"><div class="icon">🔐</div><h3>Levantamento sem cartão</h3><p>Após confirmação, o sistema pode emitir uma referência e códigos de levantamento.</p></div><div class="feature"><div class="icon">📲</div><h3>Acompanhamento</h3><p>Consulte o estado usando o número do pedido.</p></div></div></section>
+
+<section id="pedido"><h2>Comprar moeda estrangeira</h2><p class="sub">Depois do pagamento e das verificações, o pedido pode gerar a referência de levantamento.</p><div class="card">
+<div class="row"><div class="field"><label>NOME COMPLETO</label><input id="name" placeholder="Nome do requerente"></div><div class="field"><label>TIPO DE CLIENTE</label><select id="client"><option>Nacional</option><option>Estrangeiro</option></select></div></div>
+<div class="row"><div class="field"><label>TELEFONE / WHATSAPP</label><input id="phone" placeholder="+244 ..."></div><div class="field"><label>DOCUMENTO / IDENTIFICAÇÃO</label><input id="doc" placeholder="Número (não use dados reais neste protótipo)"></div></div>
+<div class="row"><div class="field"><label>MOEDA A PAGAR</label><select id="pf"><option>AOA</option><option>USD</option><option>EUR</option><option>ZAR</option><option>GBP</option></select></div><div class="field"><label>MOEDA A RECEBER</label><select id="pt"><option>USD</option><option>EUR</option><option>ZAR</option><option>GBP</option><option>AOA</option></select></div></div>
+<div class="row"><div class="field"><label>VALOR</label><input id="pv" type="number" min="0" placeholder="0"></div><div class="field"><label>PAGAMENTO</label><select id="pay"><option>Transferência bancária</option><option>Outro método aprovado pela empresa</option></select></div></div>
+<div class="field"><label>LOCAL DE LEVANTAMENTO / ENTREGA</label><input id="place" placeholder="Agência, ponto de atendimento ou zona"></div>
+<button class="primary full" onclick="makeOrder()">Criar pedido</button><div id="msg"></div>
+<div class="notice">O código de levantamento deve ser emitido apenas por um sistema autorizado e depois de confirmar o pagamento, a identidade do requerente e as regras de segurança. Esta demonstração não movimenta dinheiro.</div>
+</div></section>
+
+<section id="levantamento"><h2>Levantamento sem cartão</h2><p class="sub">Fluxo demonstrativo para levantamento por referência/código.</p><div class="card">
+<div class="row"><div class="field"><label>REFERÊNCIA DO PEDIDO</label><input id="ref" placeholder="Ex.: GC-483921"></div><div class="field"><label>CÓDIGO DE LEVANTAMENTO</label><input id="code" placeholder="Ex.: 482 915"></div></div>
+<button class="primary" onclick="checkWithdrawal()">Validar código</button><div id="withdrawResult"></div>
+<div class="notice">Na versão real, o código deverá ser de uso único, expirar automaticamente, exigir verificações adicionais e nunca ser exibido publicamente no navegador.</div>
+</div></section>
+
+<section id="acompanhar"><h2>Acompanhar pedido</h2><div class="card"><div class="row"><div class="field"><label>CÓDIGO DO PEDIDO</label><input id="track" placeholder="GC-XXXXXX"></div><div class="field"><label>TELEFONE</label><input id="trackPhone" placeholder="+244 ..."></div></div><button class="secondary" onclick="trackOrder()">Consultar</button><div id="trackResult"></div></div></section>
+
+<section id="como"><h2>Como funciona</h2><div class="steps"><div class="step"><div class="num">1</div><h3>Pedido</h3><p>O cliente escolhe a moeda e o valor.</p></div><div class="step"><div class="num">2</div><h3>Pagamento</h3><p>Faz o pagamento pelo método indicado.</p></div><div class="step"><div class="num">3</div><h3>Verificação</h3><p>A empresa confirma pagamento e requisitos.</p></div><div class="step"><div class="num">4</div><h3>Levantamento</h3><p>É emitida uma referência/código de uso controlado.</p></div></div></section>
+
+<section id="admin"><h2>Painel administrativo</h2><div class="card"><table class="table"><thead><tr><th>Pedido</th><th>Cliente</th><th>Operação</th><th>Valor</th><th>Estado</th></tr></thead><tbody id="tbody"></tbody></table></div></section>
+</div>
+<footer><strong style="color:#fff">Guevara Câmbio</strong><br><br>Protótipo de demonstração — 2026. Operações cambiais, pagamentos e levantamento por código exigem infraestrutura segura, controlo de acesso e conformidade legal aplicável.</footer>
+
+<script>
+const rates={USD:{AOA:918,EUR:.86,ZAR:16.9,GBP:.75},EUR:{AOA:1065,USD:1.16,ZAR:19.6,GBP:.87},ZAR:{AOA:54.3,USD:.059,EUR:.051,GBP:.044},GBP:{AOA:1220,USD:1.34,EUR:1.15,ZAR:22.5},AOA:{USD:1/918,EUR:1/1065,ZAR:1/54.3,GBP:1/1220}};
+const fmt=(n,c)=>new Intl.NumberFormat('pt-AO',{maximumFractionDigits:2}).format(n)+' '+(c==='AOA'?'Kz':c);
+function convert(){let f=from.value,t=to.value,a=+amount.value||0,r=f===t?1:(rates[f]?.[t]||1);out.textContent=fmt(a*r,t);rt.textContent=`1 ${f} = ${r.toLocaleString('pt-AO',{maximumFractionDigits:4})} ${t}`};convert();
+function makeOrder(){let n=name.value.trim(),p=phone.value.trim(),v=+pv.value||0;if(!n||!p||v<=0){msg.innerHTML='<p style="color:#a15c00;font-weight:800">Preencha nome, telefone e valor.</p>';return}let id='GC-'+Math.floor(100000+Math.random()*900000), c=''+Math.floor(100000+Math.random()*900000);let o={id,name:n,phone:p,client:client.value,from:pf.value,to:pt.value,value:v,pay:pay.value,place:place.value,status:'Pagamento pendente',code:c};let a=JSON.parse(localStorage.getItem('gc')||'[]');a.unshift(o);localStorage.setItem('gc',JSON.stringify(a));msg.innerHTML=`<div class="result"><span>Pedido criado</span><strong>${id}</strong><p>O código de levantamento será válido somente após a confirmação da operação.</p></div>`;load();}
+function checkWithdrawal(){let r=ref.value.trim(),c=code.value.trim().replace(/\s/g,'');let a=JSON.parse(localStorage.getItem('gc')||'[]'),o=a.find(x=>x.id===r);if(!o){withdrawResult.innerHTML='<p>Referência não encontrada.</p>';return}if(o.status!=='Pronto para levantamento'){withdrawResult.innerHTML='<p>O pedido ainda não está autorizado para levantamento.</p>';return}if(o.code!==c){withdrawResult.innerHTML='<p>Código inválido.</p>';return}withdrawResult.innerHTML='<div class="result"><span>Autorização</span><strong>Válida</strong><small>Apresente a identificação exigida no ponto de atendimento.</small></div>';}
+function trackOrder(){let r=track.value.trim(),p=trackPhone.value.trim(),a=JSON.parse(localStorage.getItem('gc')||'[]'),o=a.find(x=>x.id===r&&x.phone===p);trackResult.innerHTML=o?`<div class="result"><strong>${o.status}</strong><small>${o.from} → ${o.to} | ${o.value} | ${o.place||'Local a combinar'}</small></div>`:'<p>Pedido não encontrado.</p>'}
+function load(){let a=JSON.parse(localStorage.getItem('gc')||'[]');tbody.innerHTML=a.map(o=>`<tr><td>${o.id}</td><td>${o.name}</td><td>${o.from} → ${o.to}</td><td>${o.value}</td><td>${o.status}</td></tr>`).join('')||'<tr><td colspan="5">Nenhum pedido.</td></tr>'}load();
+</script>
+</body></html>
